@@ -1,0 +1,380 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>02 Java 面向对象 | 林深时觉寒</title><meta name="keywords" content="JavaSE,面向对象,Java"><meta name="author" content="Limor"><meta name="copyright" content="Limor"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="02 Java 面向对象 参考：CS-Notes  封装利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体。数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外的接口使其与外部发生联系。用户无需关心对象内部的细节，但可以通过对象对外提供的接口来访问该对象。 优点：  减少耦合：可以独立地开发、测试、优化、使用、理解和修改 减轻维护的负担：可以更容易被">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02 Java 面向对象">
+<meta property="og:url" content="https://kangjia1324.github.io/04-Java/base/02%20Java%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:site_name" content="林深时觉寒">
+<meta property="og:description" content="02 Java 面向对象 参考：CS-Notes  封装利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体。数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外的接口使其与外部发生联系。用户无需关心对象内部的细节，但可以通过对象对外提供的接口来访问该对象。 优点：  减少耦合：可以独立地开发、测试、优化、使用、理解和修改 减轻维护的负担：可以更容易被">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/55.jpg">
+<meta property="article:published_time" content="2021-05-06T10:10:14.000Z">
+<meta property="article:modified_time" content="2021-06-02T06:09:13.592Z">
+<meta property="article:author" content="Limor">
+<meta property="article:tag" content="JavaSE">
+<meta property="article:tag" content="面向对象">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/55.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/toux1.jpg"><link rel="canonical" href="https://kangjia1324.github.io/04-Java/base/02%20Java%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":800},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '02 Java 面向对象',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-02 14:09:13'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="/self/monokai-sublime.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/toux1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Java 技术</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/JavaSE/"><span> Java 基础</span></a></li><li><a class="site-page child" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"><span> Java 并发编程</span></a></li><li><a class="site-page child" href="/"><span> Java 集合框架</span></a></li><li><a class="site-page child" href="/"><span> Java 虚拟机</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E8%BD%AF%E7%A1%AC%E4%BB%B6%E4%BD%BF%E7%94%A8/"><span> Toolkits</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%85%E4%BA%8B/"><span> 故事</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/55.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">林深时觉寒</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Java 技术</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/JavaSE/"><span> Java 基础</span></a></li><li><a class="site-page child" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"><span> Java 并发编程</span></a></li><li><a class="site-page child" href="/"><span> Java 集合框架</span></a></li><li><a class="site-page child" href="/"><span> Java 虚拟机</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/categories/%E8%BD%AF%E7%A1%AC%E4%BB%B6%E4%BD%BF%E7%94%A8/"><span> Toolkits</span></a></div><div class="menus_item"><a class="site-page" href="/categories/%E6%95%85%E4%BA%8B/"><span> 故事</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">02 Java 面向对象</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-06T10:10:14.000Z" title="发表于 2021-05-06 18:10:14">2021-05-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-02T06:09:13.592Z" title="更新于 2021-06-02 14:09:13">2021-06-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="02 Java 面向对象"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="02-Java-面向对象"><a href="#02-Java-面向对象" class="headerlink" title="02 Java 面向对象"></a>02 Java 面向对象</h1><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/CyC2018/CS-Notes">CS-Notes</a></p>
+</blockquote>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>利用抽象数据类型将<strong>数据</strong>和<strong>基于数据的操作</strong>封装在一起，使其构成一个不可分割的独立实体。数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外的接口使其与外部发生联系。用户无需关心对象内部的细节，但可以通过对象对外提供的接口来访问该对象。</p>
+<p>优点：</p>
+<ul>
+<li>减少耦合：可以独立地开发、测试、优化、使用、理解和修改</li>
+<li>减轻维护的负担：可以更容易被理解，并且在调试的时候可以不影响其他模块</li>
+<li>有效地调节性能：可以通过剖析来确定哪些模块影响了系统的性能</li>
+<li>提高软件的可重用性</li>
+<li>降低了构建大型系统的风险：即使整个系统不可用，但是这些独立的模块却有可能是可用的</li>
+</ul>
+<p>以下 Person 类封装 name、gender、age 等属性，外界只能通过 get() 方法获取一个 Person 对象的 name 属性和 gender 属性，而无法获取 age 属性，但是 age 属性可以供 work() 方法使用。</p>
+<p>注意到 gender 属性使用 int 数据类型进行存储，封装使得用户注意不到这种实现细节。并且在需要修改 gender 属性使用的数据类型时，也可以在不影响客户端代码的情况下进行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> gender;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> age;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getGender</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> gender == <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;man&quot;</span> : <span class="hljs-string">&quot;woman&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">work</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-number">18</span> &lt;= age &amp;&amp; age &lt;= <span class="hljs-number">50</span>) &#123;<br>            System.out.println(name + <span class="hljs-string">&quot; is working very hard!&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            System.out.println(name + <span class="hljs-string">&quot; can&#x27;t work any more!&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承实现了 <strong>IS-A</strong> 关系，例如 Cat 和 Animal 就是一种 IS-A 关系，因此 Cat 可以继承自 Animal，从而获得 Animal 非 private 的属性和方法。</p>
+<p>继承应该遵循里氏替换原则，子类对象必须能够替换掉所有父类对象。</p>
+<p>Cat 可以当做 Animal 来使用，也就是说可以使用 Animal 引用 Cat 对象。父类引用指向子类对象称为 <strong>向上转型</strong> 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Animal animal = <span class="hljs-keyword">new</span> Cat();<br></code></pre></td></tr></table></figure>
+
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态性是面向对象编程的又一个重要特征，它是指在父类中定义的属性和方法被子类继承之后，可以具有不同的数据类型或表现出不同的行为，这使得同一个属性或方法在父类及其各个子类中具有不同的含义。</p>
+<p>多态分为编译时多态和运行时多态：</p>
+<ul>
+<li>编译时多态主要指方法的重载，它是根据参数列表的不同来区分不同的方法。通过编译之后会变成两个不同的方法，在运行时谈不上多态。</li>
+<li>运行时多态指程序中定义的对象引用所指向的具体类型在运行期间才确定</li>
+</ul>
+<p>Java 实现多态有 3 个必要条件：继承、重写和向上转型。只有满足这 3 个条件，开发人员才能够在同一个继承结构中使用统一的逻辑实现代码处理不同的对象，从而执行不同的行为。</p>
+<ul>
+<li>继承：在多态中必须存在有继承关系的子类和父类。</li>
+<li>重写：子类对父类中某些方法进行重新定义，在调用这些方法时就会调用子类的方法。</li>
+<li>向上转型：在多态中需要将子类的引用赋给父类对象，只有这样该引用才既能可以调用父类的方法，又能调用子类的方法。</li>
+</ul>
+<p>下面的代码中，乐器类（Instrument）有两个子类：Wind 和 Percussion，它们都覆盖了父类的 play() 方法，并且在 main() 方法中使用父类 Instrument 来引用 Wind 和 Percussion 对象。在 Instrument 引用调用 play() 方法时，会执行实际引用对象所在类的 play() 方法，而不是 Instrument 类的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Instrument</span> </span>&#123;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">play</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;Instument is playing...&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wind</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Instrument</span> </span>&#123;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">play</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;Wind is playing...&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Percussion</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Instrument</span> </span>&#123;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">play</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;Percussion is playing...&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Music</span> </span>&#123;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        List&lt;Instrument&gt; instruments = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>        instruments.add(<span class="hljs-keyword">new</span> Wind());<br>        instruments.add(<span class="hljs-keyword">new</span> Percussion());<br>        <span class="hljs-keyword">for</span>(Instrument instrument : instruments) &#123;<br>            instrument.play();<br>        &#125;<br>    &#125;<br>&#125;<br>Wind is playing...<br>Percussion is playing...<br></code></pre></td></tr></table></figure>
+
+<h2 id="抽象类与接口"><a href="#抽象类与接口" class="headerlink" title="抽象类与接口"></a>抽象类与接口</h2><p><strong>1. 抽象类</strong></p>
+<p>抽象类和抽象方法都使用 abstract 关键字进行声明。如果一个类中包含抽象方法，那么这个类必须声明为抽象类。</p>
+<p>抽象类和普通类最大的区别是，抽象类不能被实例化，只能被继承。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractClassExample</span> </span>&#123;<br><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">int</span> x;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> y;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func1</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func2</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;func2&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractExtendClassExample</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractClassExample</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func1</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;func1&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">// AbstractClassExample ac1 = new AbstractClassExample(); // &#x27;AbstractClassExample&#x27; is abstract; cannot be instantiated</span><br>AbstractClassExample ac2 = <span class="hljs-keyword">new</span> AbstractExtendClassExample();<br>ac2.func1();<br></code></pre></td></tr></table></figure>
+
+<p><strong>2. 接口</strong></p>
+<p>接口是抽象类的延伸，在 Java 8 之前，它可以看成是一个完全抽象的类，也就是说它不能有任何的方法实现。</p>
+<p>从 Java 8 开始，接口也可以拥有默认的方法实现，这是因为不支持默认方法的接口的维护成本太高了。在 Java 8 之前，如果一个接口想要添加新的方法，那么要修改所有实现了该接口的类，让它们都实现新增的方法。</p>
+<p>接口的成员（字段 + 方法）默认都是 public 的，并且不允许定义为 private 或者 protected。从 Java 9 开始，允许将方法定义为 private，这样就能定义某些复用的代码又不会把方法暴露出去。</p>
+<p>接口的字段默认都是 static 和 final 的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">InterfaceExample</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func1</span><span class="hljs-params">()</span></span>;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func2</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;func2&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">int</span> x = <span class="hljs-number">123</span>;<br>    <span class="hljs-comment">// int y;               // Variable &#x27;y&#x27; might not have been initialized</span><br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> z = <span class="hljs-number">0</span>;       <span class="hljs-comment">// Modifier &#x27;public&#x27; is redundant for interface fields</span><br>    <span class="hljs-comment">// private int k = 0;   // Modifier &#x27;private&#x27; not allowed here</span><br>    <span class="hljs-comment">// protected int l = 0; // Modifier &#x27;protected&#x27; not allowed here</span><br>    <br>    <span class="hljs-comment">// private void fun3(); // Private methods in interfaces should have a body</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun3</span><span class="hljs-params">()</span> </span>&#123; &#125; <span class="hljs-comment">// java 9 开始允许方法定义为 private</span><br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InterfaceImplementExample</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InterfaceExample</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">func1</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;func1&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">// InterfaceExample ie1 = new InterfaceExample(); // &#x27;InterfaceExample&#x27; is abstract; cannot be instantiated</span><br>InterfaceExample ie2 = <span class="hljs-keyword">new</span> InterfaceImplementExample();<br>ie2.func1();<br>System.out.println(InterfaceExample.x);<br></code></pre></td></tr></table></figure>
+
+<p><strong>3. 比较</strong></p>
+<ul>
+<li>从设计层面上看，抽象类提供了一种 IS-A 关系，需要满足里式替换原则，即子类对象必须能够替换掉所有父类对象。而接口更像是一种 LIKE-A 关系，它只是提供一种方法实现契约，并不要求接口和实现接口的类具有 IS-A 关系。</li>
+<li>从使用上来看，一个类可以实现多个接口，但是不能继承多个抽象类。</li>
+<li>接口的字段只能是 static 和 final 类型的，而抽象类的字段没有这种限制。</li>
+<li>接口的成员只能是 public 的，而抽象类的成员可以有多种访问权限。</li>
+</ul>
+<p><strong>4. 使用选择</strong></p>
+<p>使用接口：</p>
+<ul>
+<li>需要让不相关的类都实现一个方法，例如不相关的类都可以实现 Comparable 接口中的 compareTo() 方法；</li>
+<li>需要使用多重继承。</li>
+</ul>
+<p>使用抽象类：</p>
+<ul>
+<li>需要在几个相关的类中共享代码。</li>
+<li>需要能控制继承来的成员的访问权限，而不是都为 public。</li>
+<li>需要继承非静态和非常量字段。</li>
+</ul>
+<p>在很多情况下，接口优先于抽象类。因为接口没有抽象类严格的类层次结构要求，可以灵活地为一个类添加行为。并且从 Java 8 开始，接口也可以有默认的方法实现，使得修改接口的成本也变的很低。</p>
+<h2 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h2><h3 id="重写（Override）"><a href="#重写（Override）" class="headerlink" title="重写（Override）"></a>重写（Override）</h3><p>存在于继承体系中，指子类实现了一个与父类在方法声明上完全相同的一个方法。</p>
+<p>为了满足里式替换原则，重写有以下三个限制：</p>
+<ul>
+<li>子类方法的访问权限必须大于等于父类方法；</li>
+<li>子类方法的返回类型必须是父类方法返回类型或为其子类型。</li>
+<li>子类方法抛出的异常类型必须是父类抛出异常类型或为其子类型。</li>
+</ul>
+<p>使用 @Override 注解，可以让编译器帮忙检查是否满足上面的三个限制条件。</p>
+<p>下面的示例中，SubClass 为 SuperClass 的子类，SubClass 重写了 SuperClass 的 func() 方法。其中：</p>
+<ul>
+<li>子类方法访问权限为 public，大于父类的 protected。</li>
+<li>子类的返回类型为 ArrayList<Integer>，是父类返回类型 List<Integer> 的子类。</li>
+<li>子类抛出的异常类型为 Exception，是父类抛出异常 Throwable 的子类。</li>
+<li>子类重写方法使用 @Override 注解，从而让编译器自动检查是否满足限制条件。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SuperClass</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> List&lt;Integer&gt; <span class="hljs-title">func</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Throwable </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SubClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SuperClass</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> ArrayList&lt;Integer&gt; <span class="hljs-title">func</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在调用一个方法时，先从本类中查找看是否有对应的方法，如果没有再到父类中查看，看是否从父类继承来。否则就要对参数进行转型，转成父类之后看是否有对应的方法。总的来说，方法调用的优先级为：</p>
+<ul>
+<li><code>this.func(this)</code></li>
+<li><code>super.func(this)</code></li>
+<li><code>this.func(super)</code></li>
+<li><code>super.func(super)</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">    A</span><br><span class="hljs-comment">    |</span><br><span class="hljs-comment">    B</span><br><span class="hljs-comment">    |</span><br><span class="hljs-comment">    C</span><br><span class="hljs-comment">    |</span><br><span class="hljs-comment">    D</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">show</span><span class="hljs-params">(A obj)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;A.show(A)&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">show</span><span class="hljs-params">(C obj)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;A.show(C)&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">show</span><span class="hljs-params">(A obj)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;B.show(A)&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">B</span> </span>&#123;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">D</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">C</span> </span>&#123;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>    A a = <span class="hljs-keyword">new</span> A();<br>    B b = <span class="hljs-keyword">new</span> B();<br>    C c = <span class="hljs-keyword">new</span> C();<br>    D d = <span class="hljs-keyword">new</span> D();<br><br>    <span class="hljs-comment">// 在 A 中存在 show(A obj)，直接调用</span><br>    a.show(a); <span class="hljs-comment">// A.show(A)</span><br>    <span class="hljs-comment">// 在 A 中不存在 show(B obj)，将 B 转型成其父类 A</span><br>    a.show(b); <span class="hljs-comment">// A.show(A)</span><br>    <span class="hljs-comment">// 在 B 中存在从 A 继承来的 show(C obj)，直接调用</span><br>    b.show(c); <span class="hljs-comment">// A.show(C)</span><br>    <span class="hljs-comment">// 在 B 中不存在 show(D obj)，但是存在从 A 继承来的 show(C obj)，将 D 转型成其父类 C</span><br>    b.show(d); <span class="hljs-comment">// A.show(C)</span><br><br>    <span class="hljs-comment">// 引用的还是 B 对象，所以 ba 和 b 的调用结果一样</span><br>    A ba = <span class="hljs-keyword">new</span> B();<br>    ba.show(c); <span class="hljs-comment">// A.show(C)</span><br>    ba.show(d); <span class="hljs-comment">// A.show(C)</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="重载（Overload）"><a href="#重载（Overload）" class="headerlink" title="重载（Overload）"></a>重载（Overload）</h3><p>存在于同一个类中，指一个方法与已经存在的方法名称上相同，但是参数类型、个数、顺序至少有一个不同。</p>
+<p>应该注意的是，返回值不同，其它都相同不算是重载。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OverloadingExample</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">show</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        System.out.println(x);<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">show</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, String y)</span> </span>&#123;<br>        System.out.println(x + <span class="hljs-string">&quot; &quot;</span> + y);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>    OverloadingExample example = <span class="hljs-keyword">new</span> OverloadingExample();<br>    example.show(<span class="hljs-number">1</span>);<br>    example.show(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;2&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><h3 id="S-O-L-I-D"><a href="#S-O-L-I-D" class="headerlink" title="S.O.L.I.D"></a>S.O.L.I.D</h3><table>
+<thead>
+<tr>
+<th>简写</th>
+<th>全拼</th>
+<th>中文翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SRP</td>
+<td>The Single Responsibility Principle</td>
+<td>单一责任原则</td>
+</tr>
+<tr>
+<td>OCP</td>
+<td>The Open Closed Principle</td>
+<td>开放封闭原则</td>
+</tr>
+<tr>
+<td>LSP</td>
+<td>The Liskov Substitution Principle</td>
+<td>里氏替换原则</td>
+</tr>
+<tr>
+<td>ISP</td>
+<td>The Interface Segregation Principle</td>
+<td>接口分离原则</td>
+</tr>
+<tr>
+<td>DIP</td>
+<td>The Dependency Inversion Principle</td>
+<td>依赖倒置原则</td>
+</tr>
+</tbody></table>
+<p><strong>1. 单一责任原则</strong></p>
+<blockquote>
+<p>修改一个类的原因应该只有一个。</p>
+</blockquote>
+<p>换句话说就是让一个类只负责一件事，当这个类需要做过多事情的时候，就需要分解这个类。</p>
+<p>如果一个类承担的职责过多，就等于把这些职责耦合在了一起，一个职责的变化可能会削弱这个类完成其它职责的能力。</p>
+<p><strong>2. 开放封闭原则</strong></p>
+<blockquote>
+<p>类应该对扩展开放，对修改关闭。</p>
+</blockquote>
+<p>扩展就是添加新功能的意思，因此该原则要求在添加新功能时不需要修改代码。</p>
+<p>符合开闭原则最典型的设计模式是装饰者模式，它可以动态地将责任附加到对象上，而不用去修改类的代码。</p>
+<p><strong>3. 里氏替换原则</strong></p>
+<blockquote>
+<p>子类对象必须能够替换掉所有父类对象。</p>
+</blockquote>
+<p>继承是一种 IS-A 关系，子类需要能够当成父类来使用，并且需要比父类更特殊。</p>
+<p>如果不满足这个原则，那么各个子类的行为上就会有很大差异，增加继承体系的复杂度。</p>
+<p><strong>4. 接口分离原则</strong></p>
+<blockquote>
+<p>不应该强迫客户依赖于它们不用的方法。</p>
+</blockquote>
+<p>因此使用多个专门的接口比使用单一的总接口要好。</p>
+<p><strong>5. 依赖倒置原则</strong></p>
+<blockquote>
+<p>高层模块不应该依赖于低层模块，二者都应该依赖于抽象；<br>抽象不应该依赖于细节，细节应该依赖于抽象。</p>
+</blockquote>
+<p>高层模块包含一个应用程序中重要的策略选择和业务模块，如果高层模块依赖于低层模块，那么低层模块的改动就会直接影响到高层模块，从而迫使高层模块也需要改动。</p>
+<p>依赖于抽象意味着：</p>
+<ul>
+<li>任何变量都不应该持有一个指向具体类的指针或者引用；</li>
+<li>任何类都不应该从具体类派生；</li>
+<li>任何方法都不应该覆写它的任何基类中的已经实现的方法。</li>
+</ul>
+<h3 id="其他常见原则"><a href="#其他常见原则" class="headerlink" title="其他常见原则"></a>其他常见原则</h3><p>除了上述的经典原则，在实际开发中还有下面这些常见的设计原则。</p>
+<table>
+<thead>
+<tr>
+<th>简写</th>
+<th>全拼</th>
+<th>中文翻译</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LOD</td>
+<td>The Law of Demeter</td>
+<td>迪米特法则</td>
+</tr>
+<tr>
+<td>CRP</td>
+<td>The Composite Reuse Principle</td>
+<td>合成复用原则</td>
+</tr>
+<tr>
+<td>CCP</td>
+<td>The Common Closure Principle</td>
+<td>共同封闭原则</td>
+</tr>
+<tr>
+<td>SAP</td>
+<td>The Stable Abstractions Principle</td>
+<td>稳定抽象原则</td>
+</tr>
+<tr>
+<td>SDP</td>
+<td>The Stable Dependencies Principle</td>
+<td>稳定依赖原则</td>
+</tr>
+</tbody></table>
+<p><strong>1. 迪米特法则</strong></p>
+<p>迪米特法则又叫作最少知识原则（Least Knowledge Principle，简写 LKP），就是说一个对象应当对其他对象有尽可能少的了解，不和陌生人说话。</p>
+<p><strong>2. 合成复用原则</strong></p>
+<p>尽量使用对象组合，而不是通过继承来达到复用的目的。</p>
+<p><strong>3. 共同封闭原则</strong></p>
+<p>一起修改的类，应该组合在一起（同一个包里）。如果必须修改应用程序里的代码，我们希望所有的修改都发生在一个包里（修改关闭），而不是遍布在很多包里。</p>
+<p><strong>4. 稳定抽象原则</strong></p>
+<p>最稳定的包应该是最抽象的包，不稳定的包应该是具体的包，即包的抽象程度跟它的稳定性成正比。</p>
+<p><strong>5. 稳定依赖原则</strong></p>
+<p>包之间的依赖关系都应该是稳定方向依赖的，包要依赖的包要比自己更具有稳定性。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Limor</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kangjia1324.github.io/04-Java/base/02%20Java%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">https://kangjia1324.github.io/04-Java/base/02 Java 面向对象/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kangjia1324.github.io" target="_blank">林深时觉寒</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaSE/">JavaSE</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/55.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/wechat1.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/wechat1.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/alipay1.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/alipay1.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/04-Java/base/03%20Java%20%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8F%8D%E5%B0%84/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/42.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">03 Java 注解与反射</div></div></a></div><div class="next-post pull-right"><a href="/04-Java/base/01%20Java%20%E5%9F%BA%E7%A1%80/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">01 Java 基础</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/04-Java/base/03 Java 注解与反射/" title="03 Java 注解与反射"><img class="cover" src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/42.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">03 Java 注解与反射</div></div></a></div><div><a href="/04-Java/base/01 Java 基础/" title="01 Java 基础"><img class="cover" src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-05</div><div class="title">01 Java 基础</div></div></a></div><div><a href="/04-Java/concurrent/00 Java 并发编程专题/" title="00 Java 并发编程专题"><img class="cover" src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/20.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-03</div><div class="title">00 Java 并发编程专题</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/toux1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Limor</div><div class="author-info__description">A little coder.</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kangjia1324"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kangjia1324" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2466267753@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#02-Java-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">02 Java 面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">1.2.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-number">1.3.</span> <span class="toc-text">多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.4.</span> <span class="toc-text">抽象类与接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%86%99%E4%B8%8E%E9%87%8D%E8%BD%BD"><span class="toc-number">1.5.</span> <span class="toc-text">重写与重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%86%99%EF%BC%88Override%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">重写（Override）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD%EF%BC%88Overload%EF%BC%89"><span class="toc-number">1.5.2.</span> <span class="toc-text">重载（Overload）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.6.</span> <span class="toc-text">设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#S-O-L-I-D"><span class="toc-number">1.6.1.</span> <span class="toc-text">S.O.L.I.D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E5%8E%9F%E5%88%99"><span class="toc-number">1.6.2.</span> <span class="toc-text">其他常见原则</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/04-Java/base/03%20Java%20%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8F%8D%E5%B0%84/" title="03 Java 注解与反射"><img src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/42.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="03 Java 注解与反射"/></a><div class="content"><a class="title" href="/04-Java/base/03%20Java%20%E6%B3%A8%E8%A7%A3%E4%B8%8E%E5%8F%8D%E5%B0%84/" title="03 Java 注解与反射">03 Java 注解与反射</a><time datetime="2021-05-07T10:10:14.000Z" title="发表于 2021-05-07 18:10:14">2021-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/04-Java/base/02%20Java%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="02 Java 面向对象"><img src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/55.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="02 Java 面向对象"/></a><div class="content"><a class="title" href="/04-Java/base/02%20Java%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="02 Java 面向对象">02 Java 面向对象</a><time datetime="2021-05-06T10:10:14.000Z" title="发表于 2021-05-06 18:10:14">2021-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/04-Java/base/01%20Java%20%E5%9F%BA%E7%A1%80/" title="01 Java 基础"><img src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="01 Java 基础"/></a><div class="content"><a class="title" href="/04-Java/base/01%20Java%20%E5%9F%BA%E7%A1%80/" title="01 Java 基础">01 Java 基础</a><time datetime="2021-05-05T10:10:14.000Z" title="发表于 2021-05-05 18:10:14">2021-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/04-Java/concurrent/00%20Java%20%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B8%93%E9%A2%98/" title="00 Java 并发编程专题"><img src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/20.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="00 Java 并发编程专题"/></a><div class="content"><a class="title" href="/04-Java/concurrent/00%20Java%20%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B8%93%E9%A2%98/" title="00 Java 并发编程专题">00 Java 并发编程专题</a><time datetime="2021-05-03T10:10:14.000Z" title="发表于 2021-05-03 18:10:14">2021-05-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/04-Java/concurrent/12%20%E8%A1%A5%E5%85%85%E4%BA%8C%EF%BC%9AJava%20%E4%B8%AD%E7%9A%84%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97/" title="12 补充二：Java 中的阻塞队列"><img src="https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/25.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="12 补充二：Java 中的阻塞队列"/></a><div class="content"><a class="title" href="/04-Java/concurrent/12%20%E8%A1%A5%E5%85%85%E4%BA%8C%EF%BC%9AJava%20%E4%B8%AD%E7%9A%84%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97/" title="12 补充二：Java 中的阻塞队列">12 补充二：Java 中的阻塞队列</a><time datetime="2021-05-02T02:10:14.000Z" title="发表于 2021-05-02 10:10:14">2021-05-02</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/kangjia1324/Figurebed/data/55.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 By Limor</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://kangjia1324.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
